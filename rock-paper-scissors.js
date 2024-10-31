@@ -1,16 +1,5 @@
-const getComputerChoice = () => {
-    const compNum = (Math.floor(Math.random() * 3) + 1);
-    let choice;
-
-    if (compNum == 1){
-        choice = 'Rock';
-    }
-    else if (compNum == 2){
-        choice = 'Paper';
-    }
-    else if (compNum == 3){
-        choice = 'Scissors';
-    }
-
-    console.log(choice);
+const getComputerChoice= () => {
+    const options = ['Rock','Paper','Scissors'];
+    const compNum = Math.floor(Math.random() * (options.length));
+    console.log(options[compNum]);
 }
