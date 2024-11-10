@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+button {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    background-color: rgb(57, 58, 167);
+    font-size: 40px;
+    padding: 30px;
+    border: 8px outset rgb(57, 58, 167);
+    border-radius: 12px;
+    font-weight: 900;
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(57, 59, 167);
+    cursor: pointer;
+}
+
+button:active {
+    border-style: inset;
+}
