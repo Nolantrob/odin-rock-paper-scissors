@@ -29,3 +29,7 @@ button:hover {
 button:active {
     border-style: inset;
 }
+
+div {
+    color: white;
+}

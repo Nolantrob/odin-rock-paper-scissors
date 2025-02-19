@@ -11,13 +11,18 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <title>Odin: Rock, Paper, Scissors</title>
-    <script type="text/javascript" src="rock-paper-scissors.js"></script>
+    <script type="text/javascript" src="rock-paper-scissors.js" defer></script>
 </head>
 
 <body>
 
     <div class="container">
-        <button onclick="playGame();">PLAY GAME</button>
+        <button class="choice-button" id="rock">Rock</button>
+        <button class="choice-button" id="paper">Paper</button>
+        <button class="choice-button" id="scissors">Scissors</button>
+
+        <div class="victory-text-container"></div>
+        <div class="game-score-container">Score: </div>
 
     </div>
 

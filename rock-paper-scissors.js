@@ -1,3 +1,12 @@
+const choiceButtons = document.querySelectorAll('.choice-button');
+
+choiceButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // playGame(button.id);
+        console.log(button.id);
+    })
+})
+
 const playGame = () => {
 
     // This function generates rock, paper, or scissors randomly for the computer and returns the computer's choice.
@@ -11,21 +20,6 @@ const playGame = () => {
         const compNum = Math.floor(Math.random() * (options.length));
         computerChoiceHolder = options[compNum];
         return options[compNum];
-    }
-
-    // This function creates a prompt, allows the user to enter their choice, and returns user's input.
-
-    const getHumanChoice = () => {
-
-        let userInput = prompt(`${victoryStatement}Rock, Paper, or Scissors?`).toLowerCase();
-
-        if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
-            humanChoiceHolder = userInput;
-            return userInput;
-        } else {
-            alert('Please enter a valid choice!');
-            getHumanChoice();
-        }
     }
 
     victoryStatement = '';
@@ -113,7 +107,7 @@ const playGame = () => {
         playRound(getHumanChoice(), getComputerChoice());
     }
 
-    alert(`You picked... ${humanChoiceHolder}!\nComputer picked... ${computerChoiceHolder}!\n\n${(humanScore > computerScore) ? 'Victory' : 'Better luck next time'}! ${(humanScore > computerScore) ? 'Human' : 'Computer'} wins the game!
-    \nYour Score: ${humanScore}\nComputer Score: ${computerScore}\n\nPress the button below to play again!`);
+    // alert(`You picked... ${humanChoiceHolder}!\nComputer picked... ${computerChoiceHolder}!\n\n${(humanScore > computerScore) ? 'Victory' : 'Better luck next time'}! ${(humanScore > computerScore) ? 'Human' : 'Computer'} wins the game!
+    // \nYour Score: ${humanScore}\nComputer Score: ${computerScore}\n\nPress the button below to play again!`);
 
 }
