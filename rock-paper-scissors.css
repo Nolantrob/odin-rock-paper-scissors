@@ -12,7 +12,8 @@
     background-color: black;
 }
 
-.choice-button {
+.choice-button,
+.reset-score-button {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     background-color: rgb(8, 95, 52);
     font-size: 40px;
@@ -28,20 +29,39 @@
     align-items: center;
 }
 
-.choice-button:hover {
+.reset-score-button {
+    font-size: 20px;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.choice-button:hover,
+.reset-score-button:hover {
     filter: brightness(135%);
     cursor: pointer;
 }
 
-.choice-button:active {
+.choice-button:active,
+.reset-score-button:active {
     filter: brightness(115%);
     border-style: inset;
 }
 
-.game-score-container, .round-status-container {
+.game-score-container,
+.round-status-container,
+.game-winner-text-container {
     color: white;
     padding: 20px;
     font-size: 20px;
+}
+
+.game-winner-text-container {
+    font-size: 50px;
+    color: white;
+    height: 100px;
 }
 
 .round-complete-status {

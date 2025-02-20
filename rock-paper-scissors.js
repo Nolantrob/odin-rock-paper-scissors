@@ -1,7 +1,8 @@
 const choiceButtons = document.querySelectorAll('.choice-button');
 const gameScoreContainer = document.querySelector('.game-score-container');
 const roundStatusContainer = document.querySelector('.round-status-container');
-    roundStatusContainer.innerText = 'Choose an option to begin!';
+roundStatusContainer.innerText = 'Choose an option to begin!';
+const gameWinnerTextContainer = document.querySelector('.game-winner-text-container');
 
 choiceButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -9,6 +10,7 @@ choiceButtons.forEach(button => {
     })
 })
 
+// Score logic
 const score = {
     humanWins: 0,
     computerWins: 0,
@@ -17,13 +19,25 @@ const score = {
 
 function updateScore() {
 
-    gameScoreContainer.innerText =
-    `Human: ${score.humanWins} - Computer: ${score.computerWins} - Draws: ${score.draws}`;
+    gameScoreContainer.innerHTML =
+        `Human: <span class='human-score-count'>${score.humanWins}</span> - Computer: <span class='human-score-count'>${score.computerWins}</span> - Draws: ${score.draws}`;
 }
     updateScore();
 
+function resetScore() {
+    score.humanWins = 0;
+    score.computerWins = 0;
+    score.draws = 0;
+}
+
+function resetRoundResultText() {
+    roundStatusContainer.innerText = 'Choose an option to begin!';
+    gameWinnerTextContainer.innerText = '';
+}
+
 // Begin the game using the player's chosen hand
 function playRound(humanChoice) {
+    gameWinnerTextContainer.innerText = '';
     let computerChoice;
 
     const getComputerChoice = () => {
@@ -103,15 +117,19 @@ function playRound(humanChoice) {
     determineWinner();
     updateScore();
 
-    function resetScore() {
-        score.humanWins = 0;
-        score.computerWins = 0;
-        score.draws = 0;
-    }
-
-    // Reset the game once one of the players reaches 5 round wins
-    if (score.humanWins >= 5 || score.computerWins >= 5) {
+    if (score.humanWins >= 5) {
+        gameWinnerTextContainer.innerText = `Human Wins!`
+        resetScore();
+    } else if (score.computerWins >= 5) {
+        gameWinnerTextContainer.innerText = 'Computer Wins!'
         resetScore();
     }
 
 }
+
+const resetScoreButton = document.querySelector('.reset-score-button');
+resetScoreButton.addEventListener('click', () => {
+    resetScore();
+    updateScore();
+    resetRoundResultText();
+})
