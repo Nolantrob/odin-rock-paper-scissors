@@ -1,35 +1,54 @@
 * {
     margin: 0;
+    font-family: Roboto;
 }
 
 .container {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: black;
 }
 
-button {
+.choice-button {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
-    background-color: rgb(57, 58, 167);
+    background-color: rgb(8, 95, 52);
     font-size: 40px;
     padding: 30px;
-    border: 8px outset rgb(57, 58, 167);
+    border: 8px outset rgb(255, 255, 255);
     border-radius: 12px;
     font-weight: 900;
     color: white;
+    width: 220px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button:hover {
-    background-color: rgb(57, 59, 167);
+.choice-button:hover {
+    filter: brightness(135%);
     cursor: pointer;
 }
 
-button:active {
+.choice-button:active {
+    filter: brightness(115%);
     border-style: inset;
 }
 
-div {
+.game-score-container, .round-status-container {
     color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.round-complete-status {
+    color: yellow;
+}
+
+.choice-button-container {
+    display: flex;
+    gap: 10px;
 }

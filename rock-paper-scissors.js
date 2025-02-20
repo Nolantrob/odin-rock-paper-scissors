@@ -1,6 +1,7 @@
 const choiceButtons = document.querySelectorAll('.choice-button');
-
-let gameHasBegun = false;
+const gameScoreContainer = document.querySelector('.game-score-container');
+const roundStatusContainer = document.querySelector('.round-status-container');
+    roundStatusContainer.innerText = 'Choose an option to begin!';
 
 choiceButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -13,20 +14,26 @@ const score = {
     computerWins: 0,
     draws: 0
 }
+
+function updateScore() {
+
+    gameScoreContainer.innerText =
+    `Human: ${score.humanWins} - Computer: ${score.computerWins} - Draws: ${score.draws}`;
+}
+    updateScore();
+
 // Begin the game using the player's chosen hand
 function playRound(humanChoice) {
-
     let computerChoice;
 
     const getComputerChoice = () => {
         const options = ['rock', 'paper', 'scissors'];
         return options[Math.floor(Math.random() * (options.length))];
-    }   
+    }
     computerChoice = getComputerChoice();
 
     // Compare both player's hands and determine a winner
     function determineWinner() {
-        console.log(`Human choice: ${humanChoice}\nComputer choice: ${computerChoice}`);
 
         if (humanChoice === computerChoice) {
             itsADraw();
@@ -51,7 +58,8 @@ function playRound(humanChoice) {
 
     // Functions for displaying round results
     function itsADraw() {
-        console.log(`It's a draw!`);
+        roundStatusContainer.innerText = `It's a draw!`;
+        score.draws++;
     }
 
     let winningHandVerb;
@@ -59,13 +67,13 @@ function playRound(humanChoice) {
     const humanWins = (winningHand) => {
         score.humanWins++;
         getWinningHandVerb(winningHand);
-        console.log(`You won! ${capitalize(humanChoice)} ${winningHandVerb} ${computerChoice}!`);
+        roundStatusContainer.innerText = `You won! ${capitalize(humanChoice)} ${winningHandVerb} ${computerChoice}!`;
     }
 
     const computerWins = (winningHand) => {
         score.computerWins++;
         getWinningHandVerb(winningHand);
-        console.log(`You lost! ${capitalize(computerChoice)} ${winningHandVerb} ${humanChoice}!`);
+        roundStatusContainer.innerText = `You lost! ${capitalize(computerChoice)} ${winningHandVerb} ${humanChoice}!`;
     }
 
     // Set the proper verb for whatever hand won in the round result sentence
@@ -93,8 +101,17 @@ function playRound(humanChoice) {
     }
 
     determineWinner();
+    updateScore();
 
-    // Display the current score
-    console.log(`Score: Human: ${score.humanWins} Computer: ${score.computerWins}`);
+    function resetScore() {
+        score.humanWins = 0;
+        score.computerWins = 0;
+        score.draws = 0;
+    }
+
+    // Reset the game once one of the players reaches 5 round wins
+    if (score.humanWins >= 5 || score.computerWins >= 5) {
+        resetScore();
+    }
 
 }
